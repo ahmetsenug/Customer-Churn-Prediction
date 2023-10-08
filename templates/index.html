@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f5f5f5;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+        }
+        form {
+          background-color: #fff;
+          border: 1px solid #ccc;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          max-width: 600px;
+          width: 100%;
+        }
+        h1 {
+          font-size: 18px;
+          margin-top: 10px;
+        }
+                
+        input[type="radio"],
+        input[type="number"],
+        input[type="submit"] {
+          margin-right: 5px;
+        }
+
+        
+        label {
+          display: inline-block;
+          margin-right: 15px;
+        }
+
+        
+        input[type="number"] {
+          width: 40%;
+          padding: 5px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+        }
+
+        
+        input[type="submit"] {
+          background-color: #007BFF;
+          color: #fff;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+          background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        {% csrf_token %}
+        <h1 style="font-size: larger; text-align: center;">Customer Churn Analyzer</h1>
+        <h1>Gender</h1>
+        <input type="radio" id="Male" name="gender" value="Male">
+        <label for="Male">Male</label><br>
+        <input type="radio" id="Female" name="gender" value="Female">
+        <label for="Female">Female</label><br>
+        <h1>Age</h1>
+        <input type="number" name="age" min="0" max="100" required><br>
+        <h1>Days Since Last Login</h1>
+        <input type="number" min="0" name="days_last_login" required><br>
+        <h1>Average Time Spent </h1>
+        <input type="number" min="0" name="time_spent" required><br>
+        <h1>Average Transaction Value</h1>
+        <input type="number" min="0" name="avg_transaction_value" required><br>
+        <h1>Average Frequency Login Days</h1>
+        <input type="number" min="0" name="avg_frequency_login_days" required><br>
+        <h1>Points in Wallet</h1>
+        <input type="number" min="0" name="points_in_wallet" required>
+        <h1>Region Category</h1>
+        <input type="radio" name="Region_Category" id="City" value="City">
+        <label for="City">City</label><br>
+        <input type="radio" name="Region_Category" id="Town" value="Town">
+        <label for="Town">Town</label><br>
+        <input type="radio" name="Region_Category" id="Village" value="Village">
+        <label for="Village">Village</label><br>
+        <h1>Joined Through Referral</h1>
+        <input type="radio" name="joined_through_referral" id="No" value="No">
+        <label for="No">No</label><br>
+        <input type="radio" name="joined_through_referral" id="Yes" value="Yes">
+        <label for="Yes">Yes</label><br>
+        <h1>Membership Category</h1>
+        <input type="radio" name="membership_category" id="basic" value="Basic Membership">
+        <label for="basic">Basic Membership</label><br>
+        <input type="radio" name="membership_category" id="silver" value="Silver Membership">
+        <label for="silver">Silver Membership</label><br>
+        <input type="radio" name="membership_category" id="gold" value="Gold Membership">
+        <label for="gold">Gold Membership</label><br>
+        <input type="radio" name="membership_category" id="platinum" value="Platinum Membership">
+        <label for="platinum">Platinum Membership</label><br>
+        <input type="radio" name="membership_category" id="premium" value="Premium Membership">
+        <label for="premium">Premium Membership</label><br>
+        <input type="radio" name="membership_category" id="no" value="No Membership">
+        <label for="no">No Membership</label><br>
+        <h1>Preferred Offer Types</h1>
+        <input type="radio" name="preferred_offer_types" id="credit" value="Credit/Debit Card Offers">
+        <label for="credit">Credit/Debit Card Offers</label><br>
+        <input type="radio" name="preferred_offer_types" id="coupon" value="Vouchers/Coupons Offers">
+        <label for="coupon">Vouchers/Coupons Offers</label><br>
+        <input type="radio" name="preferred_offer_types" id="no" value="Without Offers">
+        <label for="no">Without Offers</label><br>
+        <h1>Medium Of Operation</h1>
+        <input type="radio" name="medium_of_operation" id="desktop" value="Desktop Operation">
+        <label for="desktop">Desktop Operation</label><br>
+        <input type="radio" name="medium_of_operation" id="smartphone" value="Smartphone Operation">
+        <label for="smartphone">Smartphone Operation</label><br>
+        <input type="radio" name="medium_of_operation" id="both" value="Both">
+        <label for="both">Both</label><br>
+        <h1>Internet Option</h1>
+        <input type="radio" name="internet_option" id="wi-fi" value="Wi-Fi">
+        <label for="wi-fi">Wi-Fi</label><br>
+        <input type="radio" name="internet_option" id="mobile_data" value="Mobile Data">
+        <label for="mobile_data">Mobile Data</label><br>
+        <input type="radio" name="internet_option" id="fiber_optic" value="Fiber Optic">
+        <label for="fiber_optic">Fiber Optic</label><br>
+        <h1>Used Special Discount</h1>
+        <input type="radio" name="Discount" id="no" value="No">
+        <label for="no">No</label><br>
+        <input type="radio" name="Discount" id="yes" value="Yes">
+        <label for="yes">Yes</label><br>
+        <h1>Offer Application Preference</h1>
+        <input type="radio" name="Offer_Application_Preference" id="no" value="No">
+        <label for="no">No</label><br>
+        <input type="radio" name="Offer_Application_Preference" id="yes" value="Yes">
+        <label for="yes">Yes</label><br>
+        <h1>Past Complatint</h1>
+        <input type="radio" name="Past_Complaint" id="no" value="No">
+        <label for="no">No</label><br>
+        <input type="radio" name="Past_Complaint" id="yes" value="Yes">
+        <label for="yes">Yes</label><br>
+        <h1>Complatint Status</h1>
+        <input type="radio" name="Complatint_Status" id="no_info" value="No Information Avaible">
+        <label for="no_info">No Information Avaible</label><br>
+        <input type="radio" name="Complatint_Status" id="not_applicable" value="Not Applicable">
+        <label for="not_applicable">Not Applicable</label><br>
+        <input type="radio" name="Complatint_Status" id="in_follow_up" value="In Follow-Up">
+        <label for="in_follow_up">In Follow-Up</label><br>
+        <input type="radio" name="Complatint_Status" id="solved" value="Solved">
+        <label for="solved">Solved</label><br>
+        <input type="radio" name="Complatint_Status" id="unsolved" value="Unsolved">
+        <label for="unsolved">Unsolved</label><br>
+        <h1>Feedback</h1>
+        <input type="radio" name="Feedback" id="no_reason_specified" value="No Reason Specified">
+        <label for="no_reason_specified">No Reason Specified</label><br>
+        <input type="radio" name="Feedback" id="poor_customer_service" value="Poor Customer Service">
+        <label for="poor_customer_service">Poor Customer Service</label><br>
+        <input type="radio" name="Feedback" id="poor_product_quality" value="Poor Product Quality">
+        <label for="poor_product_quality">Poor Product Quality</label><br>
+        <input type="radio" name="Feedback" id="poor_website" value="Poor Website">
+        <label for="poor_website">Poor Website</label><br>
+        <input type="radio" name="Feedback" id="to_many_ads" value="Too many ads">
+        <label for="to_many_ads">Too many ads</label><br>
+        <input type="radio" name="Feedback" id="products_alwars_in_stock" value="Product always in Stock">
+        <label for="products_alwars_in_stock">Products always in Stock</label><br>
+        <input type="radio" name="Feedback" id="quality_customer_care" value="Quality Customer Care">
+        <label for="quality_customer_care">Quality Customer Care</label><br>
+        <input type="radio" name="Feedback" id="reasonable_price" value="Reasonable Price">
+        <label for="reasonable_price">Reasonable Price</label><br>
+        <input type="radio" name="Feedback" id="user_friendly_website" value="User Friendly Website">
+        <label for="user_friendly_website">User Friendly Website</label><br>
+        <h1>Prediction Method</h1>
+        <input type="radio" name="Prediction" id="ann" value="ann">
+        <label for="ann">ANN</label><br>
+        <input type="radio" name="Prediction" id="DT" value="DT">
+        <label for="DT">Decision Tree</label><br>
+        <input type="radio" name="Prediction" id="NB" value="NB">
+        <label for="NB">Naive Bayes</label><br>
+        <input type="radio" name="Prediction" id="RF" value="RF">
+        <label for="RF">Random Forest</label><br>
+        <input type="radio" name="Prediction" id="XGB" value="xgboost">
+        <label for="XGB">XGBoost</label><br>
+        <input type="submit" style="margin-top: 10px;" value="Submit"> 
+        <div id="result"></div>
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("myForm");
+            const resultContainer = document.getElementById("result");
+        
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+        
+                
+                const formData = new FormData(form);
+        
+                
+                fetch("results", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => response.text()) 
+                .then(data => {
+                    
+                    resultContainer.innerHTML = data;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
